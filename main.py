@@ -128,8 +128,9 @@ discord = ds_api.Client(intents=discord_intents)
 @discord.event
 async def on_ready():
     while True:
-        wait = datetime.datetime.now(). datetime.datetime.timestamp()
-        await asyncio.sleep(600)
+        # wait = datetime.datetime.now()
+        # await asyncio.sleep(60)
+        patreon.codes = []
         patreon.refresh_pledges()
         missing_discord = ds_api.Embed(
             title='Patrons Missing Linked Discord',
@@ -138,6 +139,7 @@ async def on_ready():
         for member in patreon.pledges:
             print(f'({datetime.datetime.now()}) Generating Coupons for Patron: {member}...')
             member = patreon.pledges[member]
+            member.disc_codes = {}
             member.gen_disc_codes()
             if member.discord_id:
                 member_discord = discord.get_user(member.discord_id)
