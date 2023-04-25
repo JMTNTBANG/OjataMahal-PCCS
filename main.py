@@ -221,6 +221,6 @@ async def on_ready():
         )
         await discord.get_guild(1053851544765874216).get_channel(1053858714911776790).send(embed=embed)
         print(f'({datetime.datetime.now()}) Done!')
-        await asyncio.sleep(86400)
+        await asyncio.sleep(604800)
 
 discord.run(os.getenv('DISCORD'))
